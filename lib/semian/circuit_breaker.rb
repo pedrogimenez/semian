@@ -25,14 +25,6 @@ module Semian
       result
     end
 
-    def with_fallback(fallback, &block)
-      acquire(&block)
-    rescue *@exceptions
-      evaluate_fallback(fallback)
-    rescue OpenCircuitError
-      evaluate_fallback(fallback)
-    end
-
     def request_allowed?
       return true if closed?
       half_open if error_timeout_expired?
