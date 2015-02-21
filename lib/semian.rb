@@ -153,7 +153,7 @@ require 'semian/circuit_breaker'
 require 'semian/protected_resource'
 require 'semian/unprotected_resource'
 require 'semian/platform'
-if Semian.supported_platform? && !Semian.enabled?
+if Semian.supported_platform? && Semian.enabled?
   require 'semian/semian'
 else
   Semian::MAX_TICKETS = 0
